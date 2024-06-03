@@ -22,11 +22,13 @@ def learning_rate_schedule(t):
 # 标准正态分布
 theta = np.random.randn(3,1)
 
+# 轮次
 for epoch in range(n_epochs):
     arr = np.arange(len(X))
     np.random.shuffle(arr)
     X = X[arr]
     y = y[arr]
+    # 批次，每一批取十条样本
     for n in range(number_size):
         learning_rate = learning_rate_schedule(epoch*m + n)
         x_mini = X[n*batch_size:n*batch_size+batch_size]
