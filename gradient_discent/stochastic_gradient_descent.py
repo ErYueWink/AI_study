@@ -29,7 +29,7 @@ for epoch in range(n_epochs):
     X = X[arr]
     y = y[arr]
     for n in range(m):
-        learning_rate = learning_rate_schedule(n*m+n)
+        learning_rate = learning_rate_schedule(epoch*m+n)
         # 计算梯度
         x_stochastic = X[n:n+1]
         y_stochastic = y[n:n+1]
