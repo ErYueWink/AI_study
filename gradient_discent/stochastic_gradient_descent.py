@@ -33,7 +33,7 @@ for epoch in range(n_epochs):
         # 计算梯度
         x_stochastic = X[n:n+1]
         y_stochastic = y[n:n+1]
-        # 100 * 3 3*1 100*1 100*3 3*100  100*1 3*1
+        # 3*1
         gradient = x_stochastic.T.dot(x_stochastic.dot(theta)-y_stochastic)
         theta = theta - learning_rate * gradient
 
