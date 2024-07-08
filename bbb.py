@@ -6,6 +6,7 @@ from sklearn.neighbors import KNeighborsRegressor
 # 创建示例数据
 # 假设我们有5个房屋的数据，其中X是房屋的面积，y是房屋的价格
 X_train = np.array([[80], [100], [120], [150], [200]])  # 房屋面积（单位：平方米）
+print(X_train)
 y_train = np.array([300000, 350000, 400000, 450000, 500000])  # 房屋价格（单位：人民币）
 
 # 定义 KNN 回归模型，这里我们选择 K=3

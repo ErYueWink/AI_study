@@ -23,6 +23,8 @@ print(data.head(n=6))
 # 数据中charges作为目标变量，即y，其余变量作为自变量X1...Xn，顺便用fillna()将空值补充为0
 x = data.drop('charges',axis=1)
 y = data['charges']
+print(x)
+print(y)
 
 x.fillna(0,inplace=True)
 y.fillna(0,inplace=True)
