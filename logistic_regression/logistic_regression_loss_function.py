@@ -2,11 +2,14 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.datasets import load_breast_cancer
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from sklearn.preprocessing import scale
+
 
 # 准备数据集
 data = load_breast_cancer()
 # 取出数据集X，y
-X,y = data['data'][:,:2],data['target']
+X,y = scale(data['data'][:,:2]),data['target']
 
 logistic = LogisticRegression(fit_intercept=False)
 # 计算θ
@@ -43,4 +46,22 @@ plt.plot(theta1_space,result1_)
 plt.subplot(2,2,2)
 plt.plot(theta2_space,result2_)
 
+
+# 探索两个参数和损失函数之间的变换关系
+plt.subplot(2,2,3)
+theta1_grid,theta2_grid = np.meshgrid(theta1_space,theta2_space)
+loss_grid = loss_function(X,y,theta1_grid,theta2_grid)
+# 等高线 x轴，y轴，纵轴
+plt.contour(theta1_grid,theta2_grid,loss_grid)
+
+plt.subplot(2,2,4)
+plt.contour(theta1_grid,theta2_grid,loss_grid,30)
+
+# 第二张画布
+fig2 = plt.figure(figsize=(8,6))
+ax = Axes3D(fig2)
+fig2.add_axes(ax)
+ax.plot_surface(theta1_grid, theta2_grid, loss_grid)
 plt.show()
+
+
